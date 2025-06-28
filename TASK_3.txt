@@ -1,0 +1,76 @@
+                                                            Task 3  : Perform a Basic Vulnerability Scan on Your PC.
+ 
+
+Objective: Use free tools to identify common vulnerabilities on your computer.
+ Tools:  OpenVAS Community Edition (free vulnerability scanner) or Nessus Essentials.
+ Deliverables: Vulnerability scan report with identified issues
+
+
+ OpenVAS Vulnerability Scan Summary (Host: 192.168.1.109)
+
+  Scan Details:
+
+* Scan Date: June 27, 2025
+* Total Vulnerabilities Detected:
+
+  * High severity: 18
+  * Medium severity: 36
+  * Low severity: 3
+
+
+--> High Severity Issues:
+
+1. The TWiki platform is vulnerable to cross-site scripting and command execution, allowing attackers to run arbitrary code.
+2. The system runs an outdated Ubuntu 8.04 operating system that has reached its end of life and no longer receives security updates.
+3. Distributed Ruby (dRuby) service is misconfigured, enabling remote command execution.
+4. The Java RMI server is insecurely configured, allowing unauthenticated remote code execution.
+5. A potential backdoor is detected on port 1524 (Ingreslock).
+6. MySQL allows root login with no password, making it highly vulnerable to unauthorized access.
+7. PostgreSQL is accessible using default credentials (`postgres:postgres`).
+8. VNC service accepts weak or default passwords, making it easy to brute-force access.
+9. SSH service permits logins using default credentials like `msfadmin:msfadmin`.
+10. vsftpd service contains a known backdoor vulnerability.
+11. The phpinfo page is exposed, which leaks detailed configuration and system information.
+12. Tiki Wiki CMS is affected by multiple unspecified vulnerabilities in its older version.
+13. PHP-CGI setup allows attackers to exploit query strings to disclose source code or execute commands.
+14. UnrealIRCd server is affected by a known backdoor that enables command execution.
+15. HTTP PUT and DELETE methods are enabled, which could allow unauthorized file uploads or deletions.
+16. rlogin service is active and unencrypted, exposing the system to passwordless logins.
+17. Multiple services are running on vulnerable or unencrypted ports.
+18. Backdoors and weak services are present on several high-risk ports (e.g., 21, 80, 1099, 8787).
+
+
+
+--> Medium Severity Issues:
+
+1. Anonymous FTP access is enabled, potentially exposing sensitive files.
+2. Several expired SSL/TLS certificates were found on the system.
+3. Use of outdated SSL/TLS protocols (SSLv2, SSLv3) and weak cipher suites.
+4. Cleartext data transmission detected over Telnet, FTP, and VNC services.
+5. Cross-site request forgery (CSRF) and XSS vulnerabilities exist in TWiki.
+6. Samba service is vulnerable to remote shell command execution.
+7. Tiki Wiki CMS has a SQL injection vulnerability in a specific module.
+8. The `/doc` directory on the web server is openly browsable, exposing application details.
+9. HTTP TRACE method is enabled, which could assist cross-site tracing attacks.
+10. UnrealIRCd service allows authentication spoofing using certificate manipulation.
+
+
+--> Low Severity Issues:
+
+1. Weak MAC algorithms are supported in SSH.
+2. TCP timestamps are enabled, which may assist fingerprinting.
+3. Minor XSS vulnerability in Tiki Wiki CMS.
+
+
+
+--> Recommendations:
+
+* Update all outdated and vulnerable software and services.
+* Replace the deprecated operating system with a supported version.
+* Enforce strong and unique passwords across all services.
+* Remove or secure unnecessary services like rlogin, Telnet, anonymous FTP.
+* Disable unsafe HTTP methods such as PUT, DELETE, and TRACE.
+* Reissue valid SSL/TLS certificates and configure secure cipher suites.
+* Regularly audit and monitor services exposed to the network.
+
+
